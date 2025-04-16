@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+   
+</head>
+<body>
+    <h1> Principais Fortações</h1>
+
+    <p><h2> Negrito / Destaque</h2>
+<p> Na frase temos uma parte do <b>texto do texto em negrito</b> usando a tag B (não semantica)
+<p> Na frase temos uma parte do <strong>texto do texto em negrito</strong> usando a tag Strong (com semantica)
+
+
+
+<p><h2>Itálico / Ênfase </p></h2>
+<p> Na frase temos uma parte do texto do texto em <i>Itálico</i> usando a tag i (com semantica)
+    <p> Na frase temos uma parte do texto do texto em <em>Itálico</EM> usando a tag EM (com semantica)
+
+    <p>Texto Marcador</p>
+    <p>vamos usar um texto com destaque <mark style="background: red">de marcador de texto </mark> usando mark</p>
+    <p>vamos usar um texto com destaque <mark style="background: blue">de marcador de texto </mark> usando mark</p>
+
+    <p><h2>Texto grande e pequeno</h2></p>
+    <p> Estamos trabalhando aqui com um <big>texto grande</big> e um <small>texto pequeno</small> nessa frase</p>
+
+     <p><h2>Texto deletado</h2></p>
+     <p>Neste texto vamos trabalhar com um texto <del>que foi excluiído</del> da frase (forma semântica)</p>
+
+     <p><h2>Texto inserido</h2></p>
+
+     <p>Nesta frase vamos demonstrar como <ins>destacar um texto inserido</ins> na frase de forma semântica</p>
+     <p>Nesta frase vamos demonstrar como <u>destacar um texto inserido</u> na frase de forma não semântica</p>
+
+     <p><h2>Texto sobrescrito</h2></p>
+     <p>vamos demonstrar uma formula da equação do segundo grau ax<sup>2</sup>+bx+c=o</p>
+
+     <p><h2>Trecho de código fonte</h2></p>
+     <p>Neste exemplo vou demonstrar um trecho de coódigo</p>
+     <p>inserindo o comando <code>document.getElmentByld('edtCodigo')</code>que é um comando de Java Script</p>
+    <p>Inserindo um longo código em Phyton</p> 
+    <pre>
+        <code>
+
+            import os
+import socket
+import logging
+from time import sleep
+
+# Configuração do log
+logging.basicConfig(filename='outlet_deletion.log', level=logging.DEBUG,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+
+# Função para deletar arquivo (outlet como arquivo)
+def deletar_arquivo(caminho_do_arquivo):
+    try:
+        logging.info(f"Tentando deletar o arquivo: {caminho_do_arquivo}")
+        
+        if os.path.exists(caminho_do_arquivo):
+            os.remove(caminho_do_arquivo)
+            logging.info(f"Arquivo '{caminho_do_arquivo}' deletado com sucesso!")
+        else:
+            logging.warning(f"Arquivo '{caminho_do_arquivo}' não encontrado.")
+    except PermissionError:
+        logging.error(f"Permissão negada para deletar o arquivo '{caminho_do_arquivo}'.")
+    except Exception as e:
+        logging.error(f"Ocorreu um erro ao tentar deletar o arquivo '{caminho_do_arquivo}': {e}")
+
+# Função para fechar uma conexão de socket (outlet como socket)
+def fechar_conexao_socket(socket_obj):
+    try:
+        if socket_obj:
+            logging.info("Tentando fechar a conexão do socket.")
+            socket_obj.shutdown(socket.SHUT_RDWR)  # Desativa a leitura e escrita do socket
+            socket_obj.close()
+            logging.info("Conexão do socket fechada com sucesso!")
+        else:
+            logging.warning("Socket inválido ou já fechado.")
+    except socket.error as e:
+        logging.error(f"Erro ao tentar fechar o socket: {e}")
+    except Exception as e:
+        logging.error(f"Erro desconhecido ao tentar fechar o socket: {e}")
+
+# Função para simular um outlet de rede (criar e conectar um socket)
+def criar_conexao_socket(host, porta):
+    try:
+        logging.info(f"Tentando conectar ao servidor {host}:{porta}...")
+        
+        # Cria o socket
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.connect((host, porta))
+        
+        logging.info(f"Conexão estabelecida com sucesso ao servidor {host}:{porta}.")
+        return sock
+    except socket.error as e:
+        logging.error(f"Erro ao tentar conectar ao servidor {host}:{porta}: {e}")
+        return None
+    except Exception as e:
+        logging.error(f"Erro desconhecido ao tentar criar o socket: {e}")
+        return None
+
+# Função para simular o processo de deletar um outlet (arquivo ou conexão de rede)
+def deletar_outlet(tipo, dado):
+    if tipo == 'arquivo':
+        deletar_arquivo(dado)
+    elif tipo == 'socket':
+        # Criar e fechar socket após a interação
+        sock = criar_conexao_socket(dado[0], dado[1])
+        if sock:
+            sleep(2)  # Simula algum tempo de operação com o socket
+            fechar_conexao_socket(sock)
+    else:
+        logging.error("Tipo de outlet desconhecido. Use 'arquivo' ou 'socket'.")
+
+# Exemplo de uso
+if __name__ == "__main__":
+    # Deletando arquivo
+    deletar_outlet('arquivo', 'caminho/para/o/arquivo.txt')
+    
+    # Deletando socket
+    deletar_outlet('socket', ('localhost', 8080))
+
+        </code>
+    </pre>
+
+    <p><h2>Citações (quotation) simples</h2></p>
+<p>Segundo Steven Jobs <q>A tecnologia move o mundo</p></p>
+
+    <p><h2>Citações completas (livros)</h2></p>
+    <P><blockquote>
+        Dumbledore se virou e desceu a rua. Na esquina parou e puxou o “apagueiro”. Deu um clique e doze esferas de luz voltaram aos lampiões de modo que a rua dos Alfeneiros de repente iluminou-se com uma claridade laranja. 
+    </blockquote>
+    </P>
+
+<p><h2>Abreviações</h2></p>
+<p> Estamos estudando <abbr>Html</abbr> e <abbr>CSS</abbr></p>
+
+
+<p><h2>Texto ivertido</h2></p>
+<p><bdo dir="rtl">Estou estudando HTML</bdo></p>
+</body>
+</html>
